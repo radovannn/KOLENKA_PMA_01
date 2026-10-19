@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { Button } from "react-native";
 import { TextInput } from "react-native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, ScrollView, FlatList } from "react-native";
 
 export default function App() {
   const [item, setItem] = useState("");
@@ -22,9 +22,7 @@ export default function App() {
       </View>
 
       <View style={styles.udalosti}>
-        {task.map((i) => {
-          <Text>{i}</Text>;
-        })}
+        <FlatList data={task} renderItem={({ item }) => <Text>{item}</Text>} keyExtractor={(item, index) => item.toString()} />
       </View>
     </View>
   );
@@ -50,7 +48,7 @@ const styles = StyleSheet.create({
   },
   udalosti: {
     flex: 1,
-    backgroundColor: "#3095dd",
+    backgroundColor: "#0098f7",
   },
   inputButton: {},
 });
